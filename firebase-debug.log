@@ -1,0 +1,63 @@
+[debug] [2021-01-14T22:16:52.448Z] ----------------------------------------------------------------------
+[debug] [2021-01-14T22:16:52.458Z] Command:       /home/dam1r89/.nvm/versions/node/v14.8.0/bin/node /home/dam1r89/.nvm/versions/node/v14.8.0/bin/firebase init
+[debug] [2021-01-14T22:16:52.461Z] CLI Version:   9.2.0
+[debug] [2021-01-14T22:16:52.462Z] Platform:      linux
+[debug] [2021-01-14T22:16:52.463Z] Node Version:  v14.8.0
+[debug] [2021-01-14T22:16:52.464Z] Time:          Thu Jan 14 2021 23:16:52 GMT+0100 (Central European Standard Time)
+[debug] [2021-01-14T22:16:52.465Z] ----------------------------------------------------------------------
+[debug] [2021-01-14T22:16:52.465Z] 
+[debug] [2021-01-14T22:16:52.479Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-01-14T22:16:52.481Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /home/dam1r89/Projects/invoice-generator
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2021-01-14T22:17:25.341Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2021-01-14T22:17:25.935Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2021-01-14T22:17:25.936Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] i  Using project invoice-generator-e7852 (Invoice Generator) 
+[info] 
+=== Hosting Setup
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 
+[debug] [2021-01-14T22:19:07.227Z] >>> [apiv2][query] GET https://www.gstatic.com/firebasejs/releases.json [none]
+[debug] [2021-01-14T22:19:07.456Z] <<< [apiv2][status] GET https://www.gstatic.com/firebasejs/releases.json 200
+[debug] [2021-01-14T22:19:07.457Z] <<< [apiv2][body] GET https://www.gstatic.com/firebasejs/releases.json {"current":{"version":"8.2.2","browserURL":"https://www.gstatic.com/firebasejs/8.2.2/firebase.js","packageURL":"https://www.gstatic.com/firebasejs/8.2.2/firebase.tgz"},"live":{"version":"8.2","browserURL":"https://www.gstatic.com/firebasejs/live/8.2/firebase.js","packageURL":"https://www.gstatic.com/firebasejs/live/8.2/firebase.tgz"},"components":{"analytics":"https://www.gstatic.com/firebasejs/8.2.2/firebase-analytics.js","app":"https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js","auth":"https://www.gstatic.com/firebasejs/8.2.2/firebase-auth.js","database":"https://www.gstatic.com/firebasejs/8.2.2/firebase-database.js","firestore":"https://www.gstatic.com/firebasejs/8.2.2/firebase-firestore.js","functions":"https://www.gstatic.com/firebasejs/8.2.2/firebase-functions.js","installations":"https://www.gstatic.com/firebasejs/8.2.2/firebase-installations.js","messaging":"https://www.gstatic.com/firebasejs/8.2.2/firebase-messaging.js","storage":"https://www.gstatic.com/firebasejs/8.2.2/firebase-storage.js","performance":"https://www.gstatic.com/firebasejs/8.2.2/firebase-performance.js","remote-config":"https://www.gstatic.com/firebasejs/8.2.2/firebase-remote-config.js","firestore.memory":"https://www.gstatic.com/firebasejs/8.2.2/firebase-firestore.memory.js"}}
+[info] ✔  Wrote dist/index.html 
+[info] 
+[info] i  Didn't detect a .git folder. Assuming /home/dam1r89/Projects/invoice-generator is the project root. 
+[info] i  Authorizing with GitHub to upload your service account to a GitHub repository's secrets store. 
+[info] 
+[info] Visit this URL on this device to log in:
+[info] https://github.com/login/oauth/authorize?client_id=89cf50f02ac6aaed3484&state=472394765&redirect_uri=http%3A%2F%2Flocalhost%3A9005&scope=read%3Auser%20repo%20public_repo
+[info] 
+[info] Waiting for authentication...
+[debug] [2021-01-14T22:19:44.340Z] >>> HTTP REQUEST POST https://github.com/login/oauth/access_token  
+ {"client_id":"89cf50f02ac6aaed3484","client_secret":"3330d14abc895d9a74d5f17cd7a00711fa2c5bf0","code":"711bb6c6e352a296bac6","redirect_uri":"http://localhost:9005","state":"472394765"}
+[debug] [2021-01-14T22:19:44.685Z] <<< HTTP RESPONSE 200 {"date":"Thu, 14 Jan 2021 22:19:44 GMT","content-type":"application/json; charset=utf-8","transfer-encoding":"chunked","server":"GitHub.com","status":"200 OK","vary":"X-PJAX, Accept-Encoding, Accept, X-Requested-With, Accept-Encoding","etag":"W/\"4e758d7b41ea518f2debee60ecb8d426\"","cache-control":"max-age=0, private, must-revalidate","strict-transport-security":"max-age=31536000; includeSubdomains; preload","x-frame-options":"deny","x-content-type-options":"nosniff","x-xss-protection":"1; mode=block","referrer-policy":"origin-when-cross-origin, strict-origin-when-cross-origin","expect-ct":"max-age=2592000, report-uri=\"https://api.github.com/_private/browser/errors\"","content-security-policy":"default-src 'none'; base-uri 'self'; block-all-mixed-content; connect-src 'self' uploads.github.com www.githubstatus.com collector.githubapp.com api.github.com github-cloud.s3.amazonaws.com github-production-repository-file-5c1aeb.s3.amazonaws.com github-production-upload-manifest-file-7fdce7.s3.amazonaws.com github-production-user-asset-6210df.s3.amazonaws.com cdn.optimizely.com logx.optimizely.com/v1/events wss://alive.github.com; font-src github.githubassets.com; form-action 'self' github.com gist.github.com; frame-ancestors 'none'; frame-src render.githubusercontent.com; img-src 'self' data: github.githubassets.com identicons.github.com collector.githubapp.com github-cloud.s3.amazonaws.com *.githubusercontent.com; manifest-src 'self'; media-src 'none'; script-src github.githubassets.com; style-src 'unsafe-inline' github.githubassets.com; worker-src github.com/socket-worker-5029ae85.js gist.github.com/socket-worker-5029ae85.js","x-github-request-id":"7B99:B61B:598552:70E875:6000C380"}
+[debug] [2021-01-14T22:19:44.688Z] >>> [apiv2][query] GET https://api.github.com/user [none]
+[debug] [2021-01-14T22:19:45.031Z] <<< [apiv2][status] GET https://api.github.com/user 200
+[debug] [2021-01-14T22:19:45.032Z] <<< [apiv2][body] GET https://api.github.com/user {"login":"dam1r89","id":3540487,"node_id":"MDQ6VXNlcjM1NDA0ODc=","avatar_url":"https://avatars0.githubusercontent.com/u/3540487?v=4","gravatar_id":"","url":"https://api.github.com/users/dam1r89","html_url":"https://github.com/dam1r89","followers_url":"https://api.github.com/users/dam1r89/followers","following_url":"https://api.github.com/users/dam1r89/following{/other_user}","gists_url":"https://api.github.com/users/dam1r89/gists{/gist_id}","starred_url":"https://api.github.com/users/dam1r89/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/dam1r89/subscriptions","organizations_url":"https://api.github.com/users/dam1r89/orgs","repos_url":"https://api.github.com/users/dam1r89/repos","events_url":"https://api.github.com/users/dam1r89/events{/privacy}","received_events_url":"https://api.github.com/users/dam1r89/received_events","type":"User","site_admin":false,"name":"Damir Miladinov","company":null,"blog":"http://damirmiladinov.com/","location":null,"email":null,"hireable":null,"bio":null,"twitter_username":null,"public_repos":52,"public_gists":12,"followers":8,"following":0,"created_at":"2013-02-12T09:59:57Z","updated_at":"2021-01-14T22:19:43Z","private_gists":0,"total_private_repos":0,"owned_private_repos":0,"disk_usage":6061,"collaborators":0,"two_factor_authentication":true,"plan":{"name":"free","space":976562499,"collaborators":0,"private_repos":10000}}
+[info] 
+[info] ✔  Success! Logged into GitHub as dam1r89 
+[info] 
+[debug] [2021-01-14T22:20:06.735Z] >>> [apiv2][query] GET https://api.github.com/repos/invoice-generator/actions/secrets/public-key type=owner
+[debug] [2021-01-14T22:20:06.991Z] <<< [apiv2][status] GET https://api.github.com/repos/invoice-generator/actions/secrets/public-key 404
+[debug] [2021-01-14T22:20:06.992Z] <<< [apiv2][body] GET https://api.github.com/repos/invoice-generator/actions/secrets/public-key {"message":"Not Found","documentation_url":"https://docs.github.com/rest"}
