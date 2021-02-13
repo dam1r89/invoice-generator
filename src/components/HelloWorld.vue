@@ -1,9 +1,9 @@
 <template>
   <div class="no-print">
-    <select name="" id="">
-      <option v-for="client in clients" :value="client.id">{{ client.name }}</option>
+    <select v-model="client">
+      <option v-for="client in clients" :value="client">{{ client.name }}</option>
     </select>
-    <button @click="create">Create</button>
+    <input v-model="invoice.date" type="date">
   </div>
   <div class="printable">
     <div class="text-left">
@@ -29,15 +29,15 @@
         <table>
           <tr>
             <td>Račun broj</td>
-            <td>{{ invoice.number }}</td>
+            <td><editable v-model="invoice.number" :display="invoiceNumber" /></td>
           </tr>
           <tr>
             <td>Datum računa</td>
-            <td>{{ invoice.date }}</td>
+            <td>{{ invoiceDate }}</td>
           </tr>
           <tr>
             <td>Datum plaćanja</td>
-            <td>Decembar 16. 2020.</td>
+            <td>{{ invoiceDate }}</td>
           </tr>
         </table>
       </div>
@@ -62,12 +62,12 @@
           <th class="text-right"> Količina </th>
           <th class="text-right"> Ukupno </th>
         </tr>
-        <tr>
-          <td> Naknada za pružanje usluga </td>
-          <td> Račun za Decembar </td>
-          <td class="text-right"> 20.000,00 </td>
-          <td class="text-right"> 1 </td>
-          <td class="text-right"> 20.000,00 </td>
+        <tr v-for="item in invoice.items">
+          <td> <editable :edit="edit" v-model="item.title" /> </td>
+          <td> <editable :edit="edit" v-model="item.description" /> </td>
+          <td class="text-right"> <editable :edit="edit" v-model="item.price" :display="formatPrice(item.price)" /> </td>
+          <td class="text-right"> <editable :edit="edit" v-model="item.quantity" /> </td>
+          <td class="text-right"> {{ formatPrice(item.quantity * item.price) }} </td>
         </tr>
         <tr>
           <td colspan="5"> &nbsp; </td>
@@ -77,7 +77,7 @@
         <table class="table-sum table-padding" style="">
           <tr>
             <td> Ukupno </td>
-            <td class="text-right"> 20.000,00 </td>
+            <td class="text-right"> {{ formatPrice(total) }} </td>
           </tr>
           <tr>
             <td> Plaćanje </td>
@@ -87,12 +87,12 @@
             <td>
               Za uplatu (RSD)
             </td>
-            <td class="text-right"> 20.000,00</td>
+            <td class="text-right"> {{ formatPrice(total) }} </td>
           </tr>
           <tr class="strong-row">
             <td> Rečima </td>
             <td>
-              Dvadeset hiljada dinara
+              {{ stringPrice }} dinara
             </td class="text-right">
           </tr>
         </table>
@@ -119,13 +119,19 @@
     measurementId: "G-7RG47JGJLL"
   };
   firebase.initializeApp(firebaseConfig);
+
+import formatToString from './broj-u-slova.js';
+
+import Editable from './Editable.vue';
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
   },
+  components: {Editable},
   data() {
     return {
+      edit: false,
       clients: [],
       name: 'Damir Miladinov',
       company: {
@@ -144,9 +150,35 @@ export default {
         pib: '108716284'
       },
       invoice: {
-        number: '00000001',
-        date: 'Račun za Decembar'
+        number: 1,
+        date: '2021-02-08',
+        items: [{
+          title: 'Naknada za pružanje usluga',
+          description: 'Račun za Decembar',
+          price: 20000,
+          quantity: 1
+        }]
       }
+    }
+  },
+  computed: {
+    stringPrice() {
+      return formatToString(this.total);
+    },
+    invoiceNumber() {
+      return String(this.invoice.number).padStart(8, '0');
+    },
+    totalWords() {
+    },
+    total() {
+      return this.invoice.items.reduce((col, a) => col + a.quantity * a.price ,0)
+    },
+    invoiceDate(){
+      return new Intl.DateTimeFormat('sr-Latn', {
+        month: 'long',
+        year: 'numeric',
+        day: 'numeric'
+      }).format(new Date(this.invoice.date))
     }
   },
   mounted() {
@@ -155,11 +187,14 @@ export default {
     });
   },
   methods: {
-    create() {
-      firebase.firestore().collection('clients').add({
-        name: 'Test'
-      });
-    }
+    formatPrice(price) {
+      return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'RSD',minimumFractionDigits: 2 }).format(price);
+    },
+    // create() {
+    //   firebase.firestore().collection('clients').add({
+    //     name: 'Test'
+    //   });
+    // }
   }
 }
 </script>
